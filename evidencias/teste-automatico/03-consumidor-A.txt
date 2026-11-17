@@ -1,0 +1,13 @@
+18:22:51 26120 consumidor ouvindo http://localhost:9324/000000000000/guias
+18:22:54 26120 guia G-R-001 H-Recife
+18:22:54 26120 guia G-R-003 H-Recife
+18:22:54 26120 guia G-R-005 H-Recife
+18:22:54 26120 guia G-R-007 H-Recife
+18:22:54 26120 guia G-R-009 H-Recife
+18:22:55 26120 guia G-R-011 H-Recife
+18:22:55 26120 guia G-R-013 H-Recife
+18:22:55 26120 guia G-R-015 H-Recife
+18:22:55 26120 guia G-R-017 H-Recife
+18:22:55 26120 guia G-R-019 H-Recife
+18:22:55 26120 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '1'}
+18:23:25 26120 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '3'}

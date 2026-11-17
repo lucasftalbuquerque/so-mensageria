@@ -1,0 +1,12 @@
+18:22:51 29384 consumidor ouvindo http://localhost:9324/000000000000/guias
+18:22:54 29384 guia G-R-002 H-Recife
+18:22:54 29384 guia G-R-004 H-Recife
+18:22:54 29384 guia G-R-006 H-Recife
+18:22:54 29384 guia G-R-008 H-Recife
+18:22:55 29384 guia G-R-010 H-Recife
+18:22:55 29384 guia G-R-012 H-Recife
+18:22:55 29384 guia G-R-014 H-Recife
+18:22:55 29384 guia G-R-016 H-Recife
+18:22:55 29384 guia G-R-018 H-Recife
+18:22:55 29384 guia G-R-020 H-Recife
+18:23:10 29384 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '2'}

@@ -1,0 +1,14 @@
+$ aws sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/guias --attribute-names All --endpoint-url http://localhost:9324
+{
+    "Attributes": {
+        "ApproximateNumberOfMessagesDelayed": "0",
+        "VisibilityTimeout": "15",
+        "ApproximateNumberOfMessagesNotVisible": "0",
+        "LastModifiedTimestamp": "1794950510",
+        "QueueArn": "arn:aws:sqs:elasticmq:000000000000:guias",
+        "CreatedTimestamp": "1794950510",
+        "ApproximateNumberOfMessages": "0",
+        "ReceiveMessageWaitTimeSeconds": "0",
+        "DelaySeconds": "0"
+    }
+}

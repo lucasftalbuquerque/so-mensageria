@@ -1,0 +1,209 @@
+18:21:18 $ C:\Users\PC\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe -m pip install boto3
+18:21:30 Defaulting to user installation because normal site-packages is not writeable
+Collecting boto3
+  Downloading boto3-1.44.5-py3-none-any.whl.metadata (6.6 kB)
+Collecting botocore<1.45.0,>=1.44.5 (from boto3)
+  Downloading botocore-1.44.5-py3-none-any.whl.metadata (5.6 kB)
+Collecting jmespath<2.0.0,>=0.7.1 (from boto3)
+  Downloading jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting s3transfer<0.20.0,>=0.19.0 (from boto3)
+  Downloading s3transfer-0.19.3-py3-none-any.whl.metadata (1.7 kB)
+Collecting python-dateutil<3.0.0,>=2.1 (from botocore<1.45.0,>=1.44.5->boto3)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3!=2.2.0,<3,>=1.25.4 (from botocore<1.45.0,>=1.44.5->boto3)
+  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.1->botocore<1.45.0,>=1.44.5->boto3)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading boto3-1.44.5-py3-none-any.whl (140 kB)
+Downloading botocore-1.44.5-py3-none-any.whl (16.6 MB)
+   ---------------------------------------- 16.6/16.6 MB 10.5 MB/s eta 0:00:00
+Downloading jmespath-1.1.0-py3-none-any.whl (20 kB)
+Downloading s3transfer-0.19.3-py3-none-any.whl (90 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: urllib3, six, jmespath, python-dateutil, botocore, s3transfer, boto3
+Successfully installed boto3-1.44.5 botocore-1.44.5 jmespath-1.1.0 python-dateutil-2.9.0.post0 s3transfer-0.19.3 six-1.17.0 urllib3-2.8.0
+
+[notice] A new release of pip is available: 25.0.1 -> 26.3
+[notice] To update, run: C:\Users\PC\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe -m pip install --upgrade pip
+18:21:30 $ docker version --format Docker {{.Server.Version}}
+18:21:33 Docker 29.9.1
+18:21:33 $ aws --version
+18:21:33 aws-cli/2.40.2 Python/3.14.8 Windows/11 exe/AMD64
+18:21:33 Python 3.12.10
+18:21:33 $ docker rm -f so-elasticmq
+18:21:40 
+18:21:40 $ docker run -d --rm --name so-elasticmq -p 9324:9324 -p 9325:9325 softwaremill/elasticmq-native
+18:21:49 a0c4df36ed6bce8fe868cb32180a3037d4a056e0ef936fc3a094d82321d28cb7
+Unable to find image 'softwaremill/elasticmq-native:latest' locally
+latest: Pulling from softwaremill/elasticmq-native
+316d2745a982: Pulling fs layer
+d49a2dee86fb: Pulling fs layer
+6435ebd86477: Pulling fs layer
+2b439e726ad7: Pulling fs layer
+bb9b492570c3: Pulling fs layer
+048eb82d43f2: Pulling fs layer
+316d2745a982: Download complete
+048eb82d43f2: Download complete
+2b439e726ad7: Download complete
+bb9b492570c3: Download complete
+d49a2dee86fb: Download complete
+d49a2dee86fb: Pull complete
+2b439e726ad7: Pull complete
+bb9b492570c3: Pull complete
+6435ebd86477: Download complete
+6435ebd86477: Pull complete
+316d2745a982: Pull complete
+048eb82d43f2: Pull complete
+Digest: sha256:e4580ab9ad1bd5cd37b4ba04911bc5ccc8cd2d9ab4de56ece65acee71c24e05c
+Status: Downloaded newer image for softwaremill/elasticmq-native:latest
+18:21:49 ElasticMQ no ar
+18:21:49 $ aws sqs create-queue --queue-name guias --attributes VisibilityTimeout=15 --endpoint-url http://localhost:9324
+18:21:50 {
+    "QueueUrl": "http://localhost:9324/000000000000/guias"
+}
+18:21:50 $ aws sqs get-queue-url --queue-name guias --query QueueUrl --output text --endpoint-url http://localhost:9324
+18:21:51 http://localhost:9324/000000000000/guias
+18:21:51 $ aws sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/guias --attribute-names All --endpoint-url http://localhost:9324
+18:21:52 {
+    "Attributes": {
+        "ApproximateNumberOfMessagesDelayed": "0",
+        "VisibilityTimeout": "15",
+        "ApproximateNumberOfMessagesNotVisible": "0",
+        "LastModifiedTimestamp": "1794950510",
+        "QueueArn": "arn:aws:sqs:elasticmq:000000000000:guias",
+        "CreatedTimestamp": "1794950510",
+        "ApproximateNumberOfMessages": "0",
+        "ReceiveMessageWaitTimeSeconds": "0",
+        "DelaySeconds": "0"
+    }
+}
+18:21:52 == um consumidor (50 s)
+18:21:57 produtor: 21 mensagens enviadas para http://localhost:9324/000000000000/guias
+18:22:47 18:21:54 33492 consumidor ouvindo http://localhost:9324/000000000000/guias
+18:21:56 33492 guia G-R-001 H-Recife
+18:21:56 33492 guia G-R-002 H-Recife
+18:21:56 33492 guia G-R-003 H-Recife
+18:21:56 33492 guia G-R-004 H-Recife
+18:21:56 33492 guia G-R-005 H-Recife
+18:21:56 33492 guia G-R-006 H-Recife
+18:21:56 33492 guia G-R-007 H-Recife
+18:21:56 33492 guia G-R-008 H-Recife
+18:21:56 33492 guia G-R-009 H-Recife
+18:21:56 33492 guia G-R-010 H-Recife
+18:21:56 33492 guia G-R-011 H-Recife
+18:21:57 33492 guia G-R-012 H-Recife
+18:21:57 33492 guia G-R-013 H-Recife
+18:21:57 33492 guia G-R-014 H-Recife
+18:21:57 33492 guia G-R-015 H-Recife
+18:21:57 33492 guia G-R-016 H-Recife
+18:21:57 33492 guia G-R-017 H-Recife
+18:21:57 33492 guia G-R-018 H-Recife
+18:21:57 33492 guia G-R-019 H-Recife
+18:21:57 33492 guia G-R-020 H-Recife
+18:21:57 33492 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '1'}
+18:22:12 33492 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '2'}
+18:22:27 33492 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '3'}
+18:22:42 33492 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '4'}
+
+18:22:47 $ aws sqs get-queue-url --queue-name guias --query QueueUrl --output text --endpoint-url http://localhost:9324
+18:22:48 http://localhost:9324/000000000000/guias
+18:22:48 $ aws sqs purge-queue --queue-url http://localhost:9324/000000000000/guias --endpoint-url http://localhost:9324
+18:22:48 
+18:22:50 == dois consumidores (35 s)
+18:22:55 produtor: 21 mensagens enviadas para http://localhost:9324/000000000000/guias
+18:23:30 03-consumidor-A.txt 
+18:22:51 26120 consumidor ouvindo http://localhost:9324/000000000000/guias
+18:22:54 26120 guia G-R-001 H-Recife
+18:22:54 26120 guia G-R-003 H-Recife
+18:22:54 26120 guia G-R-005 H-Recife
+18:22:54 26120 guia G-R-007 H-Recife
+18:22:54 26120 guia G-R-009 H-Recife
+18:22:55 26120 guia G-R-011 H-Recife
+18:22:55 26120 guia G-R-013 H-Recife
+18:22:55 26120 guia G-R-015 H-Recife
+18:22:55 26120 guia G-R-017 H-Recife
+18:22:55 26120 guia G-R-019 H-Recife
+18:22:55 26120 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '1'}
+18:23:25 26120 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '3'}
+
+18:23:30 03-consumidor-B.txt 
+18:22:51 29384 consumidor ouvindo http://localhost:9324/000000000000/guias
+18:22:54 29384 guia G-R-002 H-Recife
+18:22:54 29384 guia G-R-004 H-Recife
+18:22:54 29384 guia G-R-006 H-Recife
+18:22:54 29384 guia G-R-008 H-Recife
+18:22:55 29384 guia G-R-010 H-Recife
+18:22:55 29384 guia G-R-012 H-Recife
+18:22:55 29384 guia G-R-014 H-Recife
+18:22:55 29384 guia G-R-016 H-Recife
+18:22:55 29384 guia G-R-018 H-Recife
+18:22:55 29384 guia G-R-020 H-Recife
+18:23:10 29384 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '2'}
+
+18:23:30 == DLQ (55 s)
+18:23:30 $ aws sqs create-queue --queue-name guias-dlq --endpoint-url http://localhost:9324
+18:23:31 {
+    "QueueUrl": "http://localhost:9324/000000000000/guias-dlq"
+}
+18:23:31 $ aws sqs get-queue-url --queue-name guias-dlq --query QueueUrl --output text --endpoint-url http://localhost:9324
+18:23:32 http://localhost:9324/000000000000/guias-dlq
+18:23:32 $ aws sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/guias-dlq --attribute-names QueueArn --query Attributes.QueueArn --output text --endpoint-url http://localhost:9324
+18:23:33 arn:aws:sqs:elasticmq:000000000000:guias-dlq
+18:23:33 $ aws sqs create-queue --queue-name guias-com-dlq --attributes {"VisibilityTimeout": "15", "RedrivePolicy": "{\"deadLetterTargetArn\": \"arn:aws:sqs:elasticmq:000000000000:guias-dlq\", \"maxReceiveCount\": \"3\"}"} --endpoint-url http://localhost:9324
+18:23:33 {
+    "QueueUrl": "http://localhost:9324/000000000000/guias-com-dlq"
+}
+18:23:38 produtor: 21 mensagens enviadas para http://localhost:9324/000000000000/guias-com-dlq
+18:24:33 18:23:34 23644 consumidor ouvindo http://localhost:9324/000000000000/guias-com-dlq
+18:23:37 23644 guia G-R-001 H-Recife
+18:23:37 23644 guia G-R-002 H-Recife
+18:23:37 23644 guia G-R-003 H-Recife
+18:23:37 23644 guia G-R-004 H-Recife
+18:23:37 23644 guia G-R-005 H-Recife
+18:23:37 23644 guia G-R-006 H-Recife
+18:23:37 23644 guia G-R-007 H-Recife
+18:23:37 23644 guia G-R-008 H-Recife
+18:23:37 23644 guia G-R-009 H-Recife
+18:23:38 23644 guia G-R-010 H-Recife
+18:23:38 23644 guia G-R-011 H-Recife
+18:23:38 23644 guia G-R-012 H-Recife
+18:23:38 23644 guia G-R-013 H-Recife
+18:23:38 23644 guia G-R-014 H-Recife
+18:23:38 23644 guia G-R-015 H-Recife
+18:23:38 23644 guia G-R-016 H-Recife
+18:23:38 23644 guia G-R-017 H-Recife
+18:23:38 23644 guia G-R-018 H-Recife
+18:23:38 23644 guia G-R-019 H-Recife
+18:23:38 23644 guia G-R-020 H-Recife
+18:23:38 23644 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '1'}
+18:23:53 23644 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '2'}
+18:24:08 23644 falhou; volta para a fila: mensagem sem requisicaoId {'ApproximateReceiveCount': '3'}
+
+18:24:33 $ aws sqs get-queue-url --queue-name guias-com-dlq --query QueueUrl --output text --endpoint-url http://localhost:9324
+18:24:34 http://localhost:9324/000000000000/guias-com-dlq
+18:24:34 $ aws sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/guias-com-dlq --attribute-names ApproximateNumberOfMessages ApproximateNumberOfMessagesNotVisible --endpoint-url http://localhost:9324
+18:24:35 {
+    "Attributes": {
+        "ApproximateNumberOfMessages": "0",
+        "ApproximateNumberOfMessagesNotVisible": "0"
+    }
+}
+18:24:35 $ aws sqs get-queue-url --queue-name guias-dlq --query QueueUrl --output text --endpoint-url http://localhost:9324
+18:24:35 http://localhost:9324/000000000000/guias-dlq
+18:24:35 $ aws sqs receive-message --queue-url http://localhost:9324/000000000000/guias-dlq --max-number-of-messages 10 --visibility-timeout 0 --message-system-attribute-names ApproximateReceiveCount --endpoint-url http://localhost:9324
+18:24:36 {
+    "Messages": [
+        {
+            "MessageId": "57dedb54-b2a4-4377-84b8-67d226fe1976",
+            "ReceiptHandle": "57dedb54-b2a4-4377-84b8-67d226fe1976#f2633aa1-8e34-4286-91ae-ec88b96a0cad",
+            "MD5OfBody": "d2ed8f80bc4357ba5765b4dd10db25eb",
+            "Body": "{\"hospital\": \"H-Recife\"}",
+            "Attributes": {
+                "ApproximateReceiveCount": "4"
+            }
+        }
+    ]
+}
+18:24:36 FIM. ElasticMQ continua rodando (painel em http://localhost:9325). Para parar: docker stop so-elasticmq

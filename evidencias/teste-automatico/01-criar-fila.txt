@@ -1,0 +1,4 @@
+$ aws sqs create-queue --queue-name guias --attributes VisibilityTimeout=15 --endpoint-url http://localhost:9324
+{
+    "QueueUrl": "http://localhost:9324/000000000000/guias"
+}

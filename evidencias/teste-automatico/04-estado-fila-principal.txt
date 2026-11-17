@@ -1,0 +1,7 @@
+$ aws sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/guias-com-dlq --attribute-names ApproximateNumberOfMessages ApproximateNumberOfMessagesNotVisible --endpoint-url http://localhost:9324
+{
+    "Attributes": {
+        "ApproximateNumberOfMessages": "0",
+        "ApproximateNumberOfMessagesNotVisible": "0"
+    }
+}

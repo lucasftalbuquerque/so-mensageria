@@ -1,0 +1,14 @@
+$ aws sqs receive-message --queue-url http://localhost:9324/000000000000/guias-dlq --max-number-of-messages 10 --visibility-timeout 0 --message-system-attribute-names ApproximateReceiveCount --endpoint-url http://localhost:9324
+{
+    "Messages": [
+        {
+            "MessageId": "57dedb54-b2a4-4377-84b8-67d226fe1976",
+            "ReceiptHandle": "57dedb54-b2a4-4377-84b8-67d226fe1976#f2633aa1-8e34-4286-91ae-ec88b96a0cad",
+            "MD5OfBody": "d2ed8f80bc4357ba5765b4dd10db25eb",
+            "Body": "{\"hospital\": \"H-Recife\"}",
+            "Attributes": {
+                "ApproximateReceiveCount": "4"
+            }
+        }
+    ]
+}
