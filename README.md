@@ -49,7 +49,7 @@ O código do produtor e do consumidor é o do enunciado, com três acréscimos p
    que a mensagem inválida volta a cada 15 s e qual consumidor pegou cada mensagem.
 3. **`flush=True` nos `print`**, para a saída aparecer na hora no terminal do Git Bash.
 
-## Como rodar (Caminho A)
+## Como rodar
 
 ### Pré-requisitos
 
@@ -203,17 +203,6 @@ Roteiro sugerido:
 2. (0:30) Um consumidor + produtor: 20 guias e a inválida voltando a cada 15 s.
 3. (1:30) Dois consumidores lado a lado + produtor: PIDs diferentes dividindo as mensagens.
 4. (2:30) (opcional) DLQ: `02-estado-fila.sh` e `05-ler-dlq.sh`.
-
-## Caminho B: Amazon SQS
-
-Não feito. Para usar o SQS de verdade com o mesmo código: criar a fila Standard `guias` com
-visibility timeout de 15 s, configurar um usuário IAM com permissão só nessa fila via
-`aws configure` (nunca colocar chaves no código) e rodar:
-
-```bash
-SQS_ENDPOINT= AWS_DEFAULT_REGION=<regiao-da-fila> python consumidor.py
-SQS_ENDPOINT= AWS_DEFAULT_REGION=<regiao-da-fila> python produtor.py
-```
 
 ## Uso de IA
 
