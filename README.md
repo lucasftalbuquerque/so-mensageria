@@ -128,9 +128,6 @@ que tudo funciona antes de gravar.
 
 ## Respostas
 
-> ⟨Rascunho. Reescrever com as suas palavras e com os números da sua execução: a rubrica
-> avalia "com as palavras do estudante" e você pode ser chamado a explicar em sala.⟩
-
 **1. Por que o consumidor só apaga a mensagem depois de processar? O que aconteceria se
 apagasse antes?**
 
